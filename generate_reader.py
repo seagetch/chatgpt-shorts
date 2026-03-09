@@ -154,7 +154,11 @@ def build_html(folder_name: str, title: str, blocks: list[dict[str, str]], cover
   __SOCIAL_META__
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&display=swap">
+  <link
+    id="readerFontStylesheet"
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&display=swap"
+  >
   <style>
     :root {
       color-scheme: light;
@@ -568,14 +572,42 @@ def build_html(folder_name: str, title: str, blocks: list[dict[str, str]], cover
       goToPage(parseHashPage(), false);
     }
 
-    function waitForFonts() {
-      if (!document.fonts || !document.fonts.ready) {
-        return Promise.resolve();
+    async function waitForFonts() {
+      const timeout = new Promise((resolve) => window.setTimeout(resolve, 8000));
+      const pending = [];
+      const fontStylesheet = document.getElementById("readerFontStylesheet");
+
+      if (fontStylesheet && !fontStylesheet.sheet) {
+        pending.push(new Promise((resolve) => {
+          const finish = () => {
+            fontStylesheet.removeEventListener("load", finish);
+            fontStylesheet.removeEventListener("error", finish);
+            resolve();
+          };
+
+          fontStylesheet.addEventListener("load", finish, { once: true });
+          fontStylesheet.addEventListener("error", finish, { once: true });
+        }));
       }
 
-      return Promise.race([
-        document.fonts.ready.catch(() => undefined),
-        new Promise((resolve) => window.setTimeout(resolve, 4000)),
+      if (document.fonts) {
+        pending.push(
+          Promise.all([
+            document.fonts.ready.catch(() => undefined),
+            document.fonts.load('400 16px "Shippori Mincho"').catch(() => undefined),
+            document.fonts.load('500 16px "Shippori Mincho"').catch(() => undefined),
+            document.fonts.load('700 16px "Shippori Mincho"').catch(() => undefined),
+          ]),
+        );
+      }
+
+      if (pending.length === 0) {
+        return;
+      }
+
+      await Promise.race([
+        Promise.all(pending),
+        timeout,
       ]);
     }
 
