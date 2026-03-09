@@ -561,10 +561,22 @@ def build_html(folder_name: str, title: str, blocks: list[dict[str, str]], cover
 
     initialize();
 
-    function initialize() {
+    async function initialize() {
       bindEvents();
+      await waitForFonts();
       refreshLayout(true);
       goToPage(parseHashPage(), false);
+    }
+
+    function waitForFonts() {
+      if (!document.fonts || !document.fonts.ready) {
+        return Promise.resolve();
+      }
+
+      return Promise.race([
+        document.fonts.ready.catch(() => undefined),
+        new Promise((resolve) => window.setTimeout(resolve, 4000)),
+      ]);
     }
 
     function bindEvents() {
