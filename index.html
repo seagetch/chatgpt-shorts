@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChatGPT Shorts</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ChatGPT Shorts">
+  <meta property="og:description" content="短編一覧">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ChatGPT Shorts">
+  <meta name="twitter:description" content="短編一覧">
+  <link rel="canonical" href="https://seagetch.github.io/chatgpt-shorts/">
+  <meta property="og:url" content="https://seagetch.github.io/chatgpt-shorts/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&display=swap">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg-top: #f5efe4;
+      --bg-bottom: #e0d2bd;
+      --paper: rgba(255, 252, 246, 0.96);
+      --paper-edge: rgba(255, 248, 238, 0.94);
+      --ink: #2d241d;
+      --line: rgba(69, 49, 32, 0.14);
+      --shadow: 0 24px 64px rgba(55, 36, 20, 0.18);
+      --ui-font: "Yu Gothic UI", "Hiragino Sans", "Meiryo", sans-serif;
+      --text-font: "Shippori Mincho", "Yu Mincho", "Hiragino Mincho ProN", "MS PMincho", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      color: var(--ink);
+      font-family: var(--ui-font);
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.46), transparent 32%),
+        linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.26;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      width: min(1200px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
+
+    header {
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--text-font);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+
+    .lead {
+      margin: 14px 0 0;
+      font-size: 15px;
+      line-height: 1.8;
+      opacity: 0.8;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      text-decoration: none;
+      color: inherit;
+      background: linear-gradient(180deg, var(--paper), var(--paper-edge));
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 28px 72px rgba(55, 36, 20, 0.22);
+    }
+
+    .card-cover {
+      aspect-ratio: 3 / 4;
+      background: rgba(255, 255, 255, 0.42);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .card-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-body {
+      padding: 18px 18px 20px;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-family: var(--text-font);
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .card p {
+      margin: 10px 0 0;
+      font-size: 14px;
+      line-height: 1.8;
+      opacity: 0.82;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>ChatGPT Shorts</h1>
+      <p class="lead">各話の表紙、タイトル、導入を一覧できるトップページです。</p>
+    </header>
+    <section class="grid">
+
+      <a class="card" href="20260309-十日だけ待ってて/index.html">
+        <div class="card-cover">
+          <img src="20260309-十日だけ待ってて/title.jpg" alt="十日だけ待ってて の表紙" loading="lazy">
+        </div>
+        <div class="card-body">
+          <h2>十日だけ待ってて</h2>
+          <p>「十日だけ待ってて」</p>
+        </div>
+      </a>
+
+      <a class="card" href="20260309-帰る声/index.html">
+        <div class="card-cover">
+          <img src="20260309-帰る声/title.jpg" alt="帰る声 の表紙" loading="lazy">
+        </div>
+        <div class="card-body">
+          <h2>帰る声</h2>
+          <p>引っ越しの日の朝は、家の中の音だけが少しよそゆきになる。</p>
+        </div>
+      </a>
+
+      <a class="card" href="20260309-最優先接触権/index.html">
+        <div class="card-cover">
+          <img src="20260309-最優先接触権/title.jpg" alt="『最優先接触権』 の表紙" loading="lazy">
+        </div>
+        <div class="card-body">
+          <h2>『最優先接触権』</h2>
+          <p>結婚課がなくなって、もう三十四年になる。</p>
+        </div>
+      </a>
+
+      <a class="card" href="20260309-最適解の外で、手をつなぐ/index.html">
+        <div class="card-cover">
+          <img src="20260309-最適解の外で、手をつなぐ/title.jpg" alt="『最適解の外で、手をつなぐ』 の表紙" loading="lazy">
+        </div>
+        <div class="card-body">
+          <h2>『最適解の外で、手をつなぐ』</h2>
+          <p>人類がAIに負けたのは、戦争でも経済でもなかった。 恋愛相談で、だった。</p>
+        </div>
+      </a>
+    </section>
+  </main>
+</body>
+</html>
