@@ -1,0 +1,4 @@
+interface:
+  display_name: "SF Short Writer"
+  short_description: "Draft SF shorts from a world-change premise."
+  default_prompt: "Use $sf-short-writer to plan and draft a new SF short for this repository."
