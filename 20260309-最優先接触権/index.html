@@ -447,7 +447,6 @@
             fontStylesheet.removeEventListener("error", finish);
             resolve();
           };
-
           fontStylesheet.addEventListener("load", finish, { once: true });
           fontStylesheet.addEventListener("error", finish, { once: true });
         }));
@@ -830,9 +829,11 @@
 
     function fitsBlocksInPage(measureText, blocks) {
       renderBlocksIntoContainer(measureText, blocks, true);
+      const widthTolerance = 4;
+      const heightTolerance = 1;
       return (
-        measureText.scrollWidth <= measureText.clientWidth + 1 &&
-        measureText.scrollHeight <= measureText.clientHeight + 1
+        measureText.scrollWidth <= measureText.clientWidth + widthTolerance &&
+        measureText.scrollHeight <= measureText.clientHeight + heightTolerance
       );
     }
 

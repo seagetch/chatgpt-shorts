@@ -45,11 +45,12 @@ def main() -> None:
         ensure_cover_jpeg(cover_png_path, cover_jpg_path)
 
         markdown = doc_path.read_text(encoding="utf-8")
-        blocks = [block.__dict__ for block in parse_markdown(markdown)]
-        if not blocks:
+        parsed_blocks = parse_markdown(markdown)
+        if not parsed_blocks:
             continue
 
-        title = next((block["text"] for block in blocks if block["kind"] == "h1"), directory.name)
+        title = next((block.text for block in parsed_blocks if block.kind == "h1"), directory.name)
+        blocks = [block.__dict__ for block in parsed_blocks]
         description = build_description(blocks)
         output_path.write_text(build_html(directory.name, title, blocks, cover_jpg_path.name), encoding="utf-8")
         works.append(Work(directory.name, title, description, cover_jpg_path.name))
@@ -584,7 +585,6 @@ def build_html(folder_name: str, title: str, blocks: list[dict[str, str]], cover
             fontStylesheet.removeEventListener("error", finish);
             resolve();
           };
-
           fontStylesheet.addEventListener("load", finish, { once: true });
           fontStylesheet.addEventListener("error", finish, { once: true });
         }));
@@ -967,9 +967,11 @@ def build_html(folder_name: str, title: str, blocks: list[dict[str, str]], cover
 
     function fitsBlocksInPage(measureText, blocks) {
       renderBlocksIntoContainer(measureText, blocks, true);
+      const widthTolerance = 4;
+      const heightTolerance = 1;
       return (
-        measureText.scrollWidth <= measureText.clientWidth + 1 &&
-        measureText.scrollHeight <= measureText.clientHeight + 1
+        measureText.scrollWidth <= measureText.clientWidth + widthTolerance &&
+        measureText.scrollHeight <= measureText.clientHeight + heightTolerance
       );
     }
 
