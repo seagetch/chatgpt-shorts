@@ -605,9 +605,9 @@
           return;
         }
         if (dx < 0) {
-          goToPage(getNextIndex());
-        } else {
           goToPage(getPrevIndex());
+        } else {
+          goToPage(getNextIndex());
         }
       }, { passive: true });
 
