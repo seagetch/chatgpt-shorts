@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shorts Reader Maintainer"
+  short_description: "Maintain this repo's shared reader, generator, and work pages."
+  default_prompt: "Use $shorts-reader-maintainer to update the shared reader or regenerate work pages in this repo."

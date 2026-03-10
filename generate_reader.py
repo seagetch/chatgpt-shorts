@@ -5,6 +5,7 @@ import subprocess
 from dataclasses import dataclass
 from html import escape
 from pathlib import Path
+import re
 from urllib.parse import quote
 
 
@@ -14,6 +15,7 @@ DEFAULT_COLUMNS_PER_PAGE = 20
 DEFAULT_ROWS_PER_COLUMN = 20
 DEFAULT_BODY_FONT_MIN_PX = 12
 DEFAULT_BODY_FONT_MAX_PX = 18
+DATE_PREFIX_RE = re.compile(r"^(\d{8})")
 
 
 @dataclass
@@ -34,16 +36,21 @@ def main() -> None:
     generated = 0
     works: list[Work] = []
 
-    for directory in sorted(path for path in ROOT.iterdir() if path.is_dir()):
+    for directory in sorted((path for path in ROOT.iterdir() if path.is_dir()), key=directory_sort_key):
         doc_path = directory / "doc.md"
         cover_png_path = directory / "title.png"
         cover_jpg_path = directory / "title.jpg"
         output_path = directory / "index.html"
 
-        if not doc_path.is_file() or not cover_png_path.is_file():
+        if not doc_path.is_file():
             continue
 
-        ensure_cover_jpeg(cover_png_path, cover_jpg_path)
+        cover_filename = ""
+        if cover_png_path.is_file():
+            ensure_cover_jpeg(cover_png_path, cover_jpg_path)
+            cover_filename = cover_jpg_path.name
+        elif cover_jpg_path.is_file():
+            cover_filename = cover_jpg_path.name
 
         markdown = doc_path.read_text(encoding="utf-8")
         parsed_blocks = parse_markdown(markdown)
@@ -53,15 +60,23 @@ def main() -> None:
         title = next((block.text for block in parsed_blocks if block.kind == "h1"), directory.name)
         blocks = [block.__dict__ for block in parsed_blocks]
         description = build_description(blocks)
-        output_path.write_text(build_html(directory.name, title, blocks, cover_jpg_path.name), encoding="utf-8")
-        works.append(Work(directory.name, title, description, cover_jpg_path.name))
+        output_path.write_text(build_html(directory.name, title, blocks, cover_filename), encoding="utf-8")
+        works.append(Work(directory.name, title, description, cover_filename))
         generated += 1
 
     if not generated:
-        raise SystemExit("No subfolders with both doc.md and title.png were found.")
+        raise SystemExit("No subfolders with doc.md were found.")
 
     (ROOT / "index.html").write_text(build_catalog_html(works), encoding="utf-8")
     print(f"Generated index.html in {generated} folders and root index.")
+
+
+def directory_sort_key(path: Path) -> tuple[int, str]:
+    match = DATE_PREFIX_RE.match(path.name)
+    if match:
+        # Sort newer date prefixes first while keeping lexical stability inside the same date.
+        return (-int(match.group(1)), path.name)
+    return (10**8, path.name)
 
 
 def parse_markdown(markdown_text: str) -> list[Block]:
@@ -134,7 +149,7 @@ try {{
 def build_html(folder_name: str, title: str, blocks: list[dict[str, str]], cover_filename: str) -> str:
     description = build_description(blocks)
     page_url = build_public_url(folder_name + "/")
-    cover_url = build_public_url(f"{folder_name}/{cover_filename}")
+    cover_url = build_public_url(f"{folder_name}/{cover_filename}") if cover_filename else ""
     meta_tags = build_social_meta_tags(title, description, page_url, cover_url)
     redirect_target = f"../book.html?book={quote(folder_name)}"
 
@@ -385,6 +400,27 @@ def build_catalog_html(works: list[Work]) -> str:
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+
+    .card-cover-fallback {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      padding: 24px;
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.34), transparent 38%),
+        linear-gradient(180deg, rgba(252, 247, 239, 0.94), rgba(237, 226, 209, 0.98));
+      font-family: var(--text-font);
+      font-size: clamp(24px, 2vw, 34px);
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .card-cover-fallback span {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      letter-spacing: 0.12em;
     }
 
     .card-body {
