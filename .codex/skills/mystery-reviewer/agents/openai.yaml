@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mystery Reviewer"
+  short_description: "Review mystery structure, fairness, and solvability."
+  default_prompt: "Use $mystery-reviewer to analyze an existing mystery by reconstructing its six tables and judging whether it works as a fair mystery."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mystery Writer"
+  short_description: "Plan and draft fair-play mystery fiction."
+  default_prompt: "Use $mystery-writer to plan or draft a fair-play mystery with explicit clue and reveal management."

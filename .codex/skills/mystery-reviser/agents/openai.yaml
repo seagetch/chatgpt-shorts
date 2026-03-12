@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mystery Reviser"
+  short_description: "Revise mysteries from structured review findings."
+  default_prompt: "Use $mystery-reviser to update the reconstructed mystery tables from a review and revise the story to match them."
