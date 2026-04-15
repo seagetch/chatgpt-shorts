@@ -35,6 +35,7 @@ class Work:
 def main() -> None:
     generated = 0
     works: list[Work] = []
+    warnings: list[str] = []
 
     for directory in sorted((path for path in ROOT.iterdir() if path.is_dir()), key=directory_sort_key):
         doc_path = directory / "doc.md"
@@ -60,7 +61,10 @@ def main() -> None:
         title = next((block.text for block in parsed_blocks if block.kind == "h1"), directory.name)
         blocks = [block.__dict__ for block in parsed_blocks]
         description = build_description(blocks)
-        output_path.write_text(build_html(directory.name, title, blocks, cover_filename), encoding="utf-8")
+        try:
+            output_path.write_text(build_html(directory.name, title, blocks, cover_filename), encoding="utf-8")
+        except PermissionError as exc:
+            warnings.append(f"Skipped wrapper update for {directory.name}: {exc}")
         works.append(Work(directory.name, title, description, cover_filename))
         generated += 1
 
@@ -69,6 +73,8 @@ def main() -> None:
 
     (ROOT / "index.html").write_text(build_catalog_html(works), encoding="utf-8")
     print(f"Generated index.html in {generated} folders and root index.")
+    for warning in warnings:
+        print(warning)
 
 
 def directory_sort_key(path: Path) -> tuple[int, str]:
@@ -261,12 +267,15 @@ def build_catalog_html(works: list[Work]) -> str:
     cards = []
     for work in works:
         href = f"{escape(work.folder)}/index.html"
-        cover = f"{escape(work.folder)}/{escape(work.cover)}"
+        if work.cover:
+            cover_markup = f'<img src="{escape(work.folder)}/{escape(work.cover)}" alt="{escape(work.title)} の表紙" loading="lazy">'
+        else:
+            cover_markup = f'<div class="card-cover-fallback"><span>{escape(work.title)}</span></div>'
         cards.append(
             f"""
       <a class="card" href="{href}">
         <div class="card-cover">
-          <img src="{cover}" alt="{escape(work.title)} の表紙" loading="lazy">
+          {cover_markup}
         </div>
         <div class="card-body">
           <h2>{escape(work.title)}</h2>
