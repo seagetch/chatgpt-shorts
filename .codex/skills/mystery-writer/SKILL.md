@@ -143,3 +143,10 @@ When using this skill to create or revise a mystery, prefer this working sequenc
 5. run a verification pass and list weak points
 
 If the user asks only for planning, stop before prose. If the user asks for prose only, still build at least a compact version of the six tables internally and surface them if the story starts to wobble.
+
+## Repo Fit
+
+- In this repository, keep planning in `idea.md` and prose in `doc.md`.
+- Before generating a work folder `index.html`, confirm `title.png` or `title.jpg` exists.
+- If neither cover file exists after writing the story, create a cover image based on the story and save it as `title.png`.
+- If the task also involves reader generation or catalog updates, use `shorts-reader-maintainer` as well.

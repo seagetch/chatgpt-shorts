@@ -17,3 +17,5 @@
 - Use `sf-short-writer` for planning and drafting new SF shorts, especially when the user wants the story built from premise `1`, human theme `2`, transformed theme `3`, and literary flavor `4`.
 - Prefer the shared reader flow over per-folder bespoke logic.
 - Treat `doc.md` as the story source of truth.
+- Before creating a work folder `index.html`, confirm `title.png` or `title.jpg` exists.
+- If neither cover file exists after writing the story, create a story-appropriate cover image and save it as `title.png`.

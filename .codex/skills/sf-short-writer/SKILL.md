@@ -142,6 +142,8 @@ For longer works, run the same scoring and revision loop after the first full dr
 - New works in this repository live in their own dated folders.
 - `idea.md` stores the plan and revision history.
 - `doc.md` stores the story itself.
+- Before generating a work folder `index.html`, confirm `title.png` or `title.jpg` exists.
+- If neither cover file exists after writing the story, create a cover image based on the story and save it as `title.png`.
 - If the user asks to create a new managed short in the repo, follow the existing dated-folder pattern already used by other works.
 - If the task also involves generating reader pages or updating the catalog, use `shorts-reader-maintainer` as well.
 - If you need a planning scaffold, read [references/planning-template.md](references/planning-template.md).

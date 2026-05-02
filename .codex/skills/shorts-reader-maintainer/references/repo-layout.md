@@ -25,15 +25,20 @@ Each story folder is expected to contain:
 - `title.jpg` - generated cover used by the site
 - `index.html` - generated redirect wrapper
 
+Before generating `index.html`, confirm the folder already has `title.png` or `title.jpg`.
+If neither exists, create a cover image that fits the story and save it as `title.png` first.
+
 ## Expected validation flow
 
 1. Edit `book.html` or `generate_reader.py`.
-2. If `generate_reader.py` changed, run:
+2. Before generating work pages, confirm `title.png` or `title.jpg` exists for the target story.
+   - If neither exists, create a story-appropriate `title.png`.
+3. If `generate_reader.py` changed, run:
    - `python -m py_compile generate_reader.py`
    - `python generate_reader.py`
-3. Serve the repo over HTTP:
+4. Serve the repo over HTTP:
    - `python -m http.server`
-4. Verify:
+5. Verify:
    - root catalog
    - one work page through its folder `index.html`
    - direct shared reader URL `book.html?book=<folder>`

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import shutil
 import subprocess
 from dataclasses import dataclass
 from html import escape
@@ -132,9 +133,19 @@ def ensure_cover_jpeg(source_png: Path, target_jpg: Path) -> None:
     if target_jpg.is_file() and target_jpg.stat().st_mtime >= source_png.stat().st_mtime:
         return
 
-    source = str(source_png.resolve()).replace("\\", "\\\\")
-    target = str(target_jpg.resolve()).replace("\\", "\\\\")
-    powershell_script = f"""
+    if shutil.which("sips"):
+        subprocess.run(
+            ["sips", "-s", "format", "jpeg", str(source_png), "--out", str(target_jpg)],
+            check=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+        return
+
+    if shutil.which("powershell"):
+        source = str(source_png.resolve()).replace("\\", "\\\\")
+        target = str(target_jpg.resolve()).replace("\\", "\\\\")
+        powershell_script = f"""
 Add-Type -AssemblyName System.Drawing
 $source = "{source}"
 $target = "{target}"
@@ -148,8 +159,10 @@ try {{
   $image.Dispose()
 }}
 """.strip()
+        subprocess.run(["powershell", "-NoProfile", "-Command", powershell_script], check=True)
+        return
 
-    subprocess.run(["powershell", "-NoProfile", "-Command", powershell_script], check=True)
+    raise RuntimeError("No available converter for title.png -> title.jpg; expected sips or powershell.")
 
 
 def build_html(folder_name: str, title: str, blocks: list[dict[str, str]], cover_filename: str) -> str:
