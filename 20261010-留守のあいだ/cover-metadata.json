@@ -1,12 +1,16 @@
 {
-  "gen_id": "2d001faa-6170-4632-aede-144163495b9a",
+  "gen_id": null,
   "seed": null,
   "seed_note": "生成ツールからシード値は提供されていない。",
-  "source_sha256": "73dd58a9252a82fa53fd7d4319c8e51d2abd9dcd848b428b531391c0f9c9b973",
+  "source_sha256": "c9752b577a2d7d6045a6b4222d6d0129f4ba03dcad601ada07549e7c023fb24e",
   "source_unchanged": true,
   "jpeg_derivation": {
     "quality": 95,
     "subsampling": 0,
     "optimize": true
-  }
+  },
+  "previous_gen_id": "2d001faa-6170-4632-aede-144163495b9a",
+  "generation_note": "編集ツールから画像ID・シード値は提供されていない。",
+  "edit_output_id": "exec-a322ebb0-5306-4da1-90d8-7e6ca81486f7",
+  "edit_description": "ネタバレとなる上部・右側・下部の宣伝文句を削除。題名と絵の構成を維持。"
 }
