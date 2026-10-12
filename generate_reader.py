@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from hashlib import sha256
 import shutil
 import subprocess
 from dataclasses import dataclass
@@ -31,12 +32,14 @@ class Work:
     title: str
     description: str
     cover: str
+    page_version: str
 
 
 def main() -> None:
     generated = 0
     works: list[Work] = []
     warnings: list[str] = []
+    reader_version = sha256((ROOT / "book.html").read_bytes()).hexdigest()[:16]
 
     for directory in sorted((path for path in ROOT.iterdir() if path.is_dir()), key=directory_sort_key):
         doc_path = directory / "doc.md"
@@ -53,6 +56,9 @@ def main() -> None:
             cover_filename = cover_jpg_path.name
         elif cover_jpg_path.is_file():
             cover_filename = cover_jpg_path.name
+        if cover_filename:
+            cover_version = sha256(cover_jpg_path.read_bytes()).hexdigest()[:16]
+            cover_filename += f"?v={cover_version}"
 
         markdown = doc_path.read_text(encoding="utf-8")
         parsed_blocks = parse_markdown(markdown)
@@ -62,16 +68,22 @@ def main() -> None:
         title = next((block.text for block in parsed_blocks if block.kind == "h1"), directory.name)
         blocks = [block.__dict__ for block in parsed_blocks]
         description = build_description(blocks)
+        wrapper = build_html(directory.name, title, blocks, cover_filename, reader_version)
         try:
-            output_path.write_text(build_html(directory.name, title, blocks, cover_filename), encoding="utf-8")
+            output_path.write_text(wrapper, encoding="utf-8")
         except PermissionError as exc:
             warnings.append(f"Skipped wrapper update for {directory.name}: {exc}")
-        works.append(Work(directory.name, title, description, cover_filename))
+        page_version = sha256(output_path.read_bytes()).hexdigest()[:16]
+        works.append(Work(directory.name, title, description, cover_filename, page_version))
         generated += 1
 
     if not generated:
         raise SystemExit("No subfolders with doc.md were found.")
 
+    (ROOT / "cover-versions.json").write_text(
+        json.dumps({work.folder: work.cover for work in works}, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
     (ROOT / "index.html").write_text(build_catalog_html(works), encoding="utf-8")
     print(f"Generated index.html in {generated} folders and root index.")
     for warning in warnings:
@@ -173,12 +185,12 @@ try {{
         image.convert("RGB").save(target_jpg, quality=95, subsampling=0, optimize=True)
 
 
-def build_html(folder_name: str, title: str, blocks: list[dict[str, str]], cover_filename: str) -> str:
+def build_html(folder_name: str, title: str, blocks: list[dict[str, str]], cover_filename: str, reader_version: str) -> str:
     description = build_description(blocks)
     page_url = build_public_url(folder_name + "/")
     cover_url = build_public_url(f"{folder_name}/{cover_filename}") if cover_filename else ""
     meta_tags = build_social_meta_tags(title, description, page_url, cover_url)
-    redirect_target = f"../book.html?book={quote(folder_name)}"
+    redirect_target = f"../book.html?book={quote(folder_name)}&v={reader_version}"
 
     template = """<!DOCTYPE html>
 <html lang="ja">
@@ -228,7 +240,7 @@ def build_html(folder_name: str, title: str, blocks: list[dict[str, str]], cover
 <body>
   <main>
     <h1>__TITLE__</h1>
-    <p>共通 reader へ移動しています。ローカル確認は HTTP 配信で行ってください。自動で進まない場合は <a id="bookLink" href="__REDIRECT_TARGET__">こちら</a> を開いてください。</p>
+    <p>共通 reader へ移動しています。ローカル確認は HTTP 配信で行ってください。自動で進まない場合は <a id="bookLink" href="__REDIRECT_HREF__">こちら</a> を開いてください。</p>
   </main>
   <script>
     const base = "__REDIRECT_TARGET__";
@@ -243,6 +255,7 @@ def build_html(folder_name: str, title: str, blocks: list[dict[str, str]], cover
     return (
         template.replace("__TITLE__", escape(title))
         .replace("__SOCIAL_META__", meta_tags)
+        .replace("__REDIRECT_HREF__", escape(redirect_target))
         .replace("__REDIRECT_TARGET__", redirect_target)
     )
 
@@ -287,7 +300,7 @@ def build_social_meta_tags(title: str, description: str, page_url: str, cover_ur
 def build_catalog_html(works: list[Work]) -> str:
     cards = []
     for work in works:
-        href = f"{escape(work.folder)}/index.html"
+        href = f"{escape(work.folder)}/index.html?v={work.page_version}"
         if work.cover:
             cover_markup = f'<img src="{escape(work.folder)}/{escape(work.cover)}" alt="{escape(work.title)} の表紙" loading="lazy">'
         else:

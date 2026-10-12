@@ -474,7 +474,11 @@
     async function loadWork() {
       const folder = getBookFolder();
       const basePath = folder.replace(/\/+$/, "") + "/";
-      const markdown = await fetchText(basePath + "doc.md");
+      const [markdown, coverManifest] = await Promise.all([
+        fetchText(basePath + "doc.md"),
+        fetchText("cover-versions.json"),
+      ]);
+      const coverVersions = JSON.parse(coverManifest);
       const blocks = parseMarkdown(markdown).map((block) => ({ kind: block.kind, text: block.text }));
       if (!blocks.length) {
         throw new Error("doc.md が空です。");
@@ -485,7 +489,7 @@
       return {
         folder,
         title,
-        cover: basePath + "title.jpg",
+        cover: basePath + (coverVersions[folder] || "title.jpg"),
         blocks,
       };
     }

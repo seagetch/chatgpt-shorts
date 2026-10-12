@@ -29,6 +29,8 @@ git pull --ff-only origin main
 
 HTTPで一覧、作品別ページ、共通readerの表紙・本文・ページ送りを確認する。サーバはCtrl+Cで終了する。
 
+表紙を差し替えた場合も生成器を実行する。JPEGのSHA-256から表紙URLの `?v=` を生成し、一覧・SNSメタデータ・`cover-versions.json` に反映する。共通readerはこのJSONを毎回再検証して最新の表紙URLを取得する。作品ページと共通readerへのリンクも内容ハッシュでバージョン管理する。画像と生成されたHTML・JSONを一緒にコミットする。
+
 ## mainへの反映
 
 ```sh
