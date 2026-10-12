@@ -1,2 +1,3 @@
 **/title.png
 __pycache__/
+.venv/

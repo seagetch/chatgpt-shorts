@@ -162,7 +162,15 @@ try {{
         subprocess.run(["powershell", "-NoProfile", "-Command", powershell_script], check=True)
         return
 
-    raise RuntimeError("No available converter for title.png -> title.jpg; expected sips or powershell.")
+    try:
+        from PIL import Image
+    except ImportError as exc:
+        raise RuntimeError(
+            "No available cover converter. Install dependencies with "
+            "python3 -m pip install -r requirements.txt."
+        ) from exc
+    with Image.open(source_png) as image:
+        image.convert("RGB").save(target_jpg, quality=95, subsampling=0, optimize=True)
 
 
 def build_html(folder_name: str, title: str, blocks: list[dict[str, str]], cover_filename: str) -> str:
