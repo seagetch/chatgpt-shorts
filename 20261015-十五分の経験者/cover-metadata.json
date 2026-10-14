@@ -1,0 +1,14 @@
+{
+  "title": "十五分の経験者",
+  "method": "built-in image generation; JPEG conversion with Pillow 12.3.0",
+  "source": "original generated illustration",
+  "prompt": "Contemporary Japanese gymnasium, two badminton rackets by a wooden bench, shuttlecock, folded towel, autumn window light. Watercolor and colored-pencil book cover. Title only: 十五分の経験者. No author name, tagline, clock, score, people or plot spoilers.",
+  "image_id": null,
+  "seed": null,
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "jpeg_sha256": "a3889a02b3314f6b067cdb120291dc4310971d520476af22eb24a6b869943841",
+  "review": "Title lettering, rackets, setting and spoiler-free composition visually verified."
+}
