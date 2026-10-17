@@ -50,3 +50,10 @@ Use this skill when the task involves any of these files or behaviors:
 
 - If pagination or layout breaks only after generator changes, regenerate all pages before judging the result.
 - If runtime loading fails, check the folder name passed in `?book=` and confirm `doc.md` and `title.jpg` exist in that folder.
+
+## Cover direction and visual review
+
+- Read the story and its literary tone before choosing a cover. Choose composition, people or action, viewpoint, medium and palette to convey this particular work; changing only props is not enough.
+- Avoid fixed genre templates. A quiet still life may fit one story, but "spoiler-free" does not require removing people, relationships or movement from every cover.
+- Before accepting a cover, view the actual image beside the five most recent covers, not just their prompts. Check repeated composition, dominant colors, lighting, motifs and visual mood. If the new cover repeats the same visual formula without a story-specific reason, revise it.
+- Check thumbnail readability, exact title text when present, consistency with the story, and absence of ending or solution spoilers. Record the chosen direction and actual visual comparison in the work's production notes.
