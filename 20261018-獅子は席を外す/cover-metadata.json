@@ -1,18 +1,34 @@
 {
   "title": "獅子は席を外す",
-  "generated_at": "2026-10-18T05:10:48+09:00",
+  "generated_at": "2026-10-18T10:10:00Z",
   "generator": "OpenAI built-in image generation",
   "format": "JPEG",
   "size": [
     1024,
     1536
   ],
-  "sha256": "1a5cacf9df8f8e800c63337cb0d539f4f6df5d5f98a95df6e04068a7325fd565",
-  "direction": "久条麗華と冬月澄乃を主役に、秋の仮設舞台の袖から進む斜めの全身構図。赤・金・炭色の劇場ポスター。麗華の大胆さと澄乃の制動を動作にする。既刊キャラクターシートの髪色・衣装色・役割を参照。",
+  "sha256": "b11bdbf05b263da45e93db8225e60eccb3c338a5613dac620f3537fd3736749c",
+  "direction": "秋の舞台袖を進む麗華とマントを引く澄乃の全身構図を保持し、既刊シリーズの丸みのある顔、大きな艶のある瞳、精緻な線、滑らかな柔らかい陰影、光沢のある髪へ絵柄を修正。",
   "spoiler_policy": "犯人、隠し場所、事件の仕組み、解決後の舞台を描かない。",
   "text_verified": [
     "獅子は席を外す",
     "久条麗華お嬢様の事件簿"
   ],
-  "comparison": "直近5枚の実画像と比較。測量図の手元、衣装合わせの近景、体育館の群像、緑の循環住宅、巨大な白い扉とは主色・視点・動作・空間を変更。人物2人という点は衣装直し回と共通だが、静かな胸上の関係画ではなく、対角線上に進む全身と舞台袖の明暗で区別。"
+  "comparison": "既刊シリーズ2枚と修正版の実画像を比較し、顔・目・線・塗りの連続性を確認。直近5枚とも比較し、青白の海図、桃色の衣装合わせ、水色のスポーツ群像、緑の循環設備、白い扉とは舞台・色・全身の動きで区別。",
+  "generation_references": [
+    {
+      "path": "20260313-綴じ穴は三つある/title.jpg",
+      "role": "primary art-style reference",
+      "sha256": "c4fe383415ec6505d07ba2638e8fb4e3e00f29df1a2a296489b81556c39401fe"
+    },
+    {
+      "path": "20261018-獅子は席を外す/title.jpg",
+      "role": "previous cover as scene and composition target",
+      "sha256": "1a5cacf9df8f8e800c63337cb0d539f4f6df5d5f98a95df6e04068a7325fd565"
+    }
+  ],
+  "style_review_references": [
+    "20260311-ポーは「通すな」と言わない/title.jpg",
+    "20260313-綴じ穴は三つある/title.jpg"
+  ]
 }
