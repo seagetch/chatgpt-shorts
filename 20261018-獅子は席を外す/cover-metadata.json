@@ -1,34 +1,31 @@
 {
   "title": "獅子は席を外す",
-  "generated_at": "2026-10-18T10:10:00Z",
+  "generated_at": "2026-10-18T11:00:00Z",
   "generator": "OpenAI built-in image generation",
   "format": "JPEG",
   "size": [
     1024,
     1536
   ],
-  "sha256": "b11bdbf05b263da45e93db8225e60eccb3c338a5613dac620f3537fd3736749c",
-  "direction": "秋の舞台袖を進む麗華とマントを引く澄乃の全身構図を保持し、既刊シリーズの丸みのある顔、大きな艶のある瞳、精緻な線、滑らかな柔らかい陰影、光沢のある髪へ絵柄を修正。",
-  "spoiler_policy": "犯人、隠し場所、事件の仕組み、解決後の舞台を描かない。",
+  "sha256": "cd97a14bb51babac41e395097af20c4f085f3636fecd93ada05786942b16fc90",
+  "direction": "私設美術館の旧演奏室での招待者限定の寄託披露を背景に、麗華と澄乃を描く。深紅の幕、金の装飾、楽器、展示用ロープ。澄乃は掌を差し出して接触前に制止し、マントを引かない。",
+  "spoiler_policy": "犯人、隠し場所、台の仕組み、解決場面は描かない。",
   "text_verified": [
     "獅子は席を外す",
     "久条麗華お嬢様の事件簿"
   ],
-  "comparison": "既刊シリーズ2枚と修正版の実画像を比較し、顔・目・線・塗りの連続性を確認。直近5枚とも比較し、青白の海図、桃色の衣装合わせ、水色のスポーツ群像、緑の循環設備、白い扉とは舞台・色・全身の動きで区別。",
   "generation_references": [
     {
-      "path": "20260313-綴じ穴は三つある/title.jpg",
-      "role": "primary art-style reference",
-      "sha256": "c4fe383415ec6505d07ba2638e8fb4e3e00f29df1a2a296489b81556c39401fe"
+      "reference": "本作の絵柄修正済み生成PNG",
+      "role": "人物・絵柄・構図の編集元",
+      "sha256": "25ad86a51c5b9acbe1902e2f265cb2777c29fc1ddca984b1de3797f74da42bae"
     },
     {
-      "path": "20261018-獅子は席を外す/title.jpg",
-      "role": "previous cover as scene and composition target",
-      "sha256": "1a5cacf9df8f8e800c63337cb0d539f4f6df5d5f98a95df6e04068a7325fd565"
+      "path": "20260313-綴じ穴は三つある/title.jpg",
+      "role": "既刊シリーズの絵柄参照",
+      "sha256": "c4fe383415ec6505d07ba2638e8fb4e3e00f29df1a2a296489b81556c39401fe"
     }
   ],
-  "style_review_references": [
-    "20260311-ポーは「通すな」と言わない/title.jpg",
-    "20260313-綴じ穴は三つある/title.jpg"
-  ]
+  "style_continuity": "既刊の丸みのある顔、大きく艶のある瞳、繊細な線、滑らかな肌と髪の陰影、精緻な衣装装飾を保持。",
+  "comparison": "既刊2作との絵柄の連続性を確認。町の祭り・提灯・観客の群衆を取り除き、改稿後の私的な美術館の催しへ背景を一致させた。直近5作とは舞台・配色・二人の動作を区別。"
 }
