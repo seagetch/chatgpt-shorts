@@ -19,10 +19,10 @@ Broaden candidate creation by considering these families, including subgenres an
 2. Mystery / deduction: fair-play, impossible crime, inverted, everyday puzzle, police, legal, historical, psychological, social, cozy.
 3. Suspense / thriller: pursuit, hostage, espionage, political, corporate, techno, medical, conspiracy, survival.
 4. Horror / uncanny: ghost, folklore, urban legend, cosmic, body, psychological, monster, technological, quotidian intrusion, absurd.
-5. Fantasy: epic, low, urban, isekai, reincarnation, villainess, sword and sorcery, myth, folktale, magical realism.
+5. Fantasy: epic, low, urban, **異世界転生・異世界転移・異世界召喚・異世界生活・異世界職業もの・異世界スローライフ・異世界コメディ**, **悪役令嬢（破滅回避・婚約破棄・断罪・領地経営・復讐・恋愛・逆転劇）**, sword and sorcery, myth, folktale, magical realism.
 6. Romance / relationships: comedy, first love, adulthood, separation, reunion, marriage, friendship, family, queer relationships.
 7. Coming of age: school, club, exam, craft, apprenticeship, talent, failure, self-determination.
-8. Comedy / humor: daily, dialogue, farce, mistaken identity, slapstick, black comedy, social satire, parody, nonsense.
+8. Comedy / humor: **小噺・一席もの・落語的な会話劇・頓智・洒落・勘違い・オチの効いた掌編**, daily, dialogue, farce, mistaken identity, slapstick, black comedy, social satire, parody, nonsense.
 9. Historical / period: historical drama, swordplay, war, court, alternate history, folk life, legend.
 10. Adventure / action: exploration, treasure hunt, sea, air, espionage, martial arts, heist, escape, buddy action.
 11. Social / political / economic: society, elections, bureaucracy, corporate, finance, labor, media, justice, inequality, ecology.
@@ -33,6 +33,10 @@ Broaden candidate creation by considering these families, including subgenres an
 16. Religion / philosophy: existence, ethics, gods, death, identity, free will, perception.
 17. Disaster / extreme: natural disaster, accident, rescue, epidemic, war at home, confined space, resource scarcity.
 18. Formal experiments: epistolary, diary, report, dialogue-only, monologue, multiple testimonies, reverse order, loop, nested, unreliable narration, metafiction, single-scene.
+19. **ライトノベル／キャラクター小説**: 学園ラノベ、異能バトル、冒険ファンタジー、ラブコメ、日常系、キャラクター掛け合い、バディ、転生・追放・成り上がり、Web小説的な強い導入と爽快な転換、コメディ主体の短編。ライトノベルは文体・読者期待・市場形式でもあり、他の主ジャンルと組み合わせて指定する。
+20. **異世界・悪役令嬢系（独立した企画枠としても検討）**: 転生先での生活、ゲーム世界、婚約破棄、断罪回避、破滅フラグ、宮廷陰謀、領地・経営、貴族社会のコメディ、主従逆転、複数視点の誤解、恋愛以外の解決。既存のテンプレ展開を安易に反復せず、人物の能動的選択と短編の独立した決着を作る。
+
+**Short-form Japanese literary modes must not be erased by a broad Western genre label.** For each idea explicitly consider whether 小噺、掌編コメディ、ライトノベル、異世界転生・転移、悪役令嬢、Web小説風の短編 are viable creative modes alongside literary, SF, detective, or dramatic works. They must be allowed as the PRIMARY intended reader experience, not merely subordinated as a minor flavor. Avoid always choosing restrained realism over playful/genre-forward premises.
 
 Genres are **not** plot engines. Independently vary: puzzle, reversal, duel, pursuit/escape, quest/discovery, growth, relationship shift, sacrifice/choice, fall/tragedy, escalating farce, competition, revenge, cumulative repetition, observation, allegory/satire. Choose an engine that creates concrete choices and change, not just an atmospheric label.
 
@@ -95,7 +99,7 @@ Record in `idea.md`:
 - independently generated candidate table, created before archive consultation;
 - actual works inspected and similarity comparison;
 - selection scores, rejected options, reason for choice;
-- selected primary genre, secondary influences, plot engine, stakes, tone, perspective, decisive events, climax and intended ending;
+- selected primary genre, secondary influences, **reader-facing format/market mode (e.g. 小噺／ライトノベル／異世界／悪役令嬢 when applicable)**, plot engine, stakes, tone, perspective, decisive events, climax and intended ending;
 - known factual research needs, risky assumptions, and applicable specialist skills;
 - plan status: PASS / FAIL / NOT VERIFIED.
 
