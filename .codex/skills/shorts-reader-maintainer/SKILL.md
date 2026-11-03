@@ -57,3 +57,19 @@ Use this skill when the task involves any of these files or behaviors:
 - Avoid fixed genre templates. A quiet still life may fit one story, but "spoiler-free" does not require removing people, relationships or movement from every cover.
 - Before accepting a cover, view the actual image beside the five most recent covers, not just their prompts. Check repeated composition, dominant colors, lighting, motifs and visual mood. If the new cover repeats the same visual formula without a story-specific reason, revise it.
 - Check thumbnail readability, exact title text when present, consistency with the story, and absence of ending or solution spoilers. Record the chosen direction and actual visual comparison in the work's production notes.
+
+## Genre-first cover design (mandatory for all new/replaced covers)
+
+The cover must communicate the **actual genre and reader promise** at thumbnail size as well as the distinctive plot. Record the primary genre, target readership, cover concept, and reason for the chosen visual grammar in the work's `idea.md` or cover notes **before** image generation. The cover is not an abstract generic illustration merely decorated with one relevant prop.
+
+- **小噺／落語的喜劇／短い笑い話**: readable comic situation, expressive gesture, active character interplay or visual incongruity, buoyant rhythm; if apt, theatrical or witty composition. Do not impose ominous cinematic stillness or solemn literary abstraction on a joke.
+- **ライトノベル／キャラクター小説**: prioritize appealing, identifiable main characters, expressive faces, distinctive costume and relationship, clear genre premise and energetic anime/light-novel visual language; use the specific subgenre's visual grammar rather than a uniform cover template.
+- **異世界転生・異世界転移**: show concrete otherworldly social/architectural/magical cues and the protagonist's situation; the picture must read as an isekai work without spoiling its central reveal. Avoid ordinary contemporary scenery that could fit any story.
+- **悪役令嬢**: communicate aristocratic/fantasy court milieu, the heroine's agency, expressive attitude, costume, and relevant confrontation/romantic/comic tension; choose composition based on whether the work is comedy, reversal, drama, revenge or romance. Do not automatically use generic villainess stock iconography.
+- **Mystery / horror / SF / adventure / romance / sport / literary**: select a correspondingly recognizable narrative image, with the scene, action, characters, atmosphere and visual conventions fitting that actual work. For adventure and sports, prefer legible action or competition rather than detached symbols unless the text warrants otherwise.
+
+Before acceptance, assess the cover on **two separate gates**: (1) faithful to scenes, characters, setting, tone, with no invented devices or spoilers; (2) recognizable genre, subgenre, and intended readership without reading the blurb. A failure on either gate means revise the design. Realistic, pastel, sepia, minimalist, cinematic, anime, manga, illustrated-book, and graphic styles are **choices**, not defaults. Never override the genre's visual language because recent covers used a different style.
+
+For recurring series, maintain character identity/recognizable design, but vary pose, action, framing and visual rhythm as demanded by each episode's genre. Review the actual most recent five cover images to avoid repetition. Do not conceal genre-specific character or action imagery under generic spoiler avoidance. Do not reveal the twist, culprit, solution or final scene merely to signal genre.
+
+The final publication checklist must record the genre legibility gate and content fidelity gate as PASS / FAIL / NOT TESTED. The work is not cover-ready if either is FAIL or NOT TESTED. If image-generation or asset-upload capabilities are unavailable, do not quietly reuse a mismatched prior image or claim publication complete.
