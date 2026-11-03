@@ -52,6 +52,10 @@ Genres are **not** plot engines. Independently vary: puzzle, reversal, duel, pur
 
 Write fixed user requirements, series continuity, intended length, audience, format and exclusions. For a series, read character/world canon **without reading old plot summaries first**. For standalone work, do not imply series obligations.
 
+### Default length and form decision (record before plotting)
+
+Unless the user specifies a different length, set the working target to **3,000–4,000 Japanese characters (excluding whitespace)**, with **2,500–5,000** as a flexible genre/structure-dependent neighborhood. Record the target and the narrative tasks it must accommodate in `idea.md`; do not make a 1,000–1,500-character summary the unannounced default. A work planned below **2,000 characters** requires an intentional form (such as 小噺・落語的一席, 寓話, flash fiction), a concrete explanation of why the dramatic setup, escalation and payoff fully fit, and independent review under the orchestrator's length gate. Never add filler solely to hit the range. User-specified length overrides the default; the chosen form still must function as a complete story.
+
 ### 2. External discovery and research — before genre selection
 
 For each new premise, actively research **current public material** before deciding the genre and candidate engines. Use available live web/news research tools (and primary sources when appropriate); do not rely solely on model memory or existing chatgpt-shorts stories.
