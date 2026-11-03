@@ -15,6 +15,17 @@ python3 -m venv .venv
 
 Windowsでは `.venv/bin/python` を `.venv/Scripts/python.exe` に読み替える。PNG変換はmacOSのsips、WindowsのPowerShell、その他の環境ではPillowを使用する。Git LFS管理のPNGを追加する場合はLFSの認証・アップロードも必要。
 
+## 物語制作のスキル順序
+
+新規短編の企画・執筆は `AGENTS.md` と `.codex/skills/shorts-production-orchestrator/SKILL.md` を入口とする。
+
+1. `shorts-concept-planner` で幅広いジャンルと物語構造を独立に発案し、過去作はその後で重複検出・設定整合に使う。
+2. 久条麗華シリーズなら、同じ企画段階で `reika-series-planner` を併用する（候補出しを二重にしない）。
+3. 企画決定と `idea.md` 記録の後に、選んだ物語機構に応じ `mystery-writer` / `horror-writer` / `sf-short-writer` 等へ引き継ぐ。専門スキルがないジャンルを無理にミステリ化しない。
+4. 完成稿 `doc.md` を批判的に検証・改稿してから、`shorts-reader-maintainer` による表紙・reader・公開作業へ進む。
+
+既存作の小修正、批評、reader保守は統括スキルの該当工程のみ適用する。完成・公開の状態は実際の検証結果に基づいて記録する。
+
 ## 編集・生成・検証
 
 先に `AGENTS.md` と `.codex/skills/shorts-reader-maintainer/SKILL.md` を読む。既存の未コミット変更は保全する。新作には `doc.md` と表紙を置く。公開readerは `title.jpg` を読み込むのでJPEGを必ずコミットする。`title.png` は通常ignoreされている。
