@@ -34,7 +34,7 @@ def main():
     try:
         catalog = fetch("index.html").decode("utf-8")
         reader = fetch("book.html").decode("utf-8")
-        assert "doc.md" in reader and "title.jpg" in reader
+        assert "doc.md" in reader and "cover" in reader
         covers = json.loads(fetch("cover-versions.json"))
         reader_version = sha256(reader.encode("utf-8")).hexdigest()[:16]
         works = sorted(path for path in ROOT.iterdir() if path.is_dir() and (path / "doc.md").is_file())
@@ -51,8 +51,14 @@ def main():
             assert f'{work.name}/index.html?v={page_version}' in unescape(catalog), work.name
             fetch(f"{work.name}/doc.md").decode("utf-8")
             image = fetch(f"{work.name}/{covers[work.name]}")
-            assert image.startswith(b"\xff\xd8"), f"Invalid JPEG: {work.name}"
-            expected_cover = f"title.jpg?v={sha256(image).hexdigest()[:16]}"
+            cover_name = covers[work.name].split("?")[0]
+            if cover_name.endswith(".jpg"):
+                assert image.startswith(b"\\xff\\xd8"), f"Invalid JPEG: {work.name}"
+            elif cover_name.endswith(".svg"):
+                assert b"<svg" in image[:512], f"Invalid SVG: {work.name}"
+            else:
+                raise AssertionError(f"Unsupported cover: {work.name}")
+            expected_cover = f"{cover_name}?v={sha256(image).hexdigest()[:16]}"
             assert covers[work.name] == expected_cover, f"Stale cover version: {work.name}"
             assert f"{work.name}/{expected_cover}" in unescape(catalog), work.name
             assert f"{work.name}/{expected_cover}" in unescape(wrapper), work.name
