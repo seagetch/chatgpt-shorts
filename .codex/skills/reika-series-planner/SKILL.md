@@ -7,11 +7,13 @@ description: Use before proposing, planning, drafting, or substantially revising
 
 ## Goal and scope
 
-Maintain the recognizable personalities and relationship of 久条麗華 and 冬月澄乃 **without** making every episode the same polite, nonfatal, object-based mystery. This is an **upstream planning skill**, separate from mystery mechanics, horror mechanics, prose revision, and publication. Use it for all new series episodes even when the episode is not a conventional mystery. For a revision that changes the central plot, re-run the selection and repetition checks.
+Maintain the recognizable personalities and relationship of 久条麗華 and 冬月澄乃 **without** making every episode the same polite, nonfatal, object-based mystery. This is a **series-specific subskill of the common concept planning phase** routed by `shorts-production-orchestrator` and `shorts-concept-planner`, separate from mystery mechanics, horror mechanics, prose revision, and publication. Use the same candidate pool and archive audit for both common and series planning; do not generate two redundant sets of six proposals. Use it for all new series episodes even when the episode is not a conventional mystery. For a revision that changes the central plot, re-run the selection and repetition checks.
 
 **Critical distinction: continuity is not imitation.** Prior works and character notes are a canon and negative-comparison resource, NOT a template for generating the next premise.
 
 ## Planning sequence — order is mandatory
+
+Start from the orchestrator's Phase 1. Lock canonical character facts without importing prior episode plots, build the shared independent candidate pool, then consult story texts for negative similarity.
 
 ### 1. Lock only the genuine series constants
 
