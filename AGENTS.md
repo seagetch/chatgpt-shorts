@@ -7,6 +7,7 @@
 - `mystery-reviser`: Use when applying mystery review findings to update structured story information and revise the prose accordingly. (file: `.codex/skills/mystery-reviser/SKILL.md`)
 - `shorts-reader-maintainer`: Use when working on this repository's shared reader, generator, root catalog, or per-work wrappers. (file: `.codex/skills/shorts-reader-maintainer/SKILL.md`)
 - `sf-short-writer`: Use when planning or drafting a new SF short for this repository from a scientific world-change premise. (file: `.codex/skills/sf-short-writer/SKILL.md`)
+- `horror-writer`: Use when planning, drafting, reviewing, or revising horror; verify observable events, physical staging, supernatural invariants, credible decisions, and first-read clarity before approval. (file: `.codex/skills/horror-writer/SKILL.md`)
 
 ### How to use skills
 
@@ -15,6 +16,7 @@
 - Use `mystery-reviser` after a mystery review, when the structured information should be updated first and the prose should then be revised to match.
 - Use `shorts-reader-maintainer` for changes to `book.html`, `generate_reader.py`, root `index.html`, or any generated work `index.html`.
 - Use `sf-short-writer` for planning and drafting new SF shorts, especially when the user wants the story built from premise `1`, human theme `2`, transformed theme `3`, and literary flavor `4`.
+- Use `horror-writer` for all horror work, including supernatural, uncanny, psychological, and horror/SF or horror/mystery hybrids. Before changing `doc.md`, record the event model, spatial geometry, supernatural constraints, and reader-facing verification in `idea.md`. A failed clarity, spatial, rule, or behavioral gate blocks acceptance even when the prose is polished.
 - Prefer the shared reader flow over per-folder bespoke logic.
 - Treat `doc.md` as the story source of truth.
 - Before creating a work folder `index.html`, confirm `title.png` or `title.jpg` exists.
