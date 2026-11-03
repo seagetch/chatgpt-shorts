@@ -95,6 +95,7 @@ For cross-genre work, select a primary engine and apply other specialists only t
 
 When authorized to produce/publish a managed story:
 - Use `shorts-reader-maintainer` and `UPDATE.md`; `doc.md` remains text source of truth.
+- **MANDATORY: Only image-generation outputs may be used as cover artwork.** Never use SVG/HTML/CSS/programmatic drawing or stock artwork, nor invent a vector replacement for an already generated cover. Reuse the story's existing generated image; image processing may only crop/resize/encode it to the canonical `title.jpg`. A missing JPEG blocks publication until the generated cover is correctly uploaded.
 - Cover must follow **both the actual story and the chosen genre/subgenre's reader-facing visual language**, without giving away the climax. Explicitly support 小噺の喜劇性、ライトノベルのキャラクター性、異世界の世界観、悪役令嬢の人物・宮廷性などを、作品の内容に応じて表紙に表現する。Use the genre fidelity/content fidelity PASS gates in `shorts-reader-maintainer`; inspect similarity to recent actual covers, not just prompts. Ensure required JPEG exists for the current reader.
 - Regenerate `index.html` wrappers and catalog with the repo's generator as appropriate, verify hashes and references, run documented static/HTTP tests and actual reader pagination/cover where possible.
 - Preserve existing unrelated changes. Inspect staged scope and commit/push only within explicit user authorization.
