@@ -53,7 +53,7 @@ def main():
             image = fetch(f"{work.name}/{covers[work.name]}")
             cover_name = covers[work.name].split("?")[0]
             if cover_name.endswith(".jpg"):
-                assert image.startswith(b"\xff\xd8"), f"Invalid JPEG: {work.name}"
+                assert image.startswith(b"\\xff\\xd8"), f"Invalid JPEG: {work.name}"
             elif cover_name.endswith(".svg"):
                 assert b"<svg" in image[:512], f"Invalid SVG: {work.name}"
             else:
