@@ -45,26 +45,19 @@ def main() -> None:
         doc_path = directory / "doc.md"
         cover_png_path = directory / "title.png"
         cover_jpg_path = directory / "title.jpg"
-        cover_svg_path = directory / "title.svg"
         output_path = directory / "index.html"
 
         if not doc_path.is_file():
             continue
 
         cover_filename = ""
-        cover_asset_path = None
         if cover_png_path.is_file():
             ensure_cover_jpeg(cover_png_path, cover_jpg_path)
             cover_filename = cover_jpg_path.name
-            cover_asset_path = cover_jpg_path
         elif cover_jpg_path.is_file():
             cover_filename = cover_jpg_path.name
-            cover_asset_path = cover_jpg_path
-        elif cover_svg_path.is_file():
-            cover_filename = cover_svg_path.name
-            cover_asset_path = cover_svg_path
         if cover_filename:
-            cover_version = sha256(cover_asset_path.read_bytes()).hexdigest()[:16]
+            cover_version = sha256(cover_jpg_path.read_bytes()).hexdigest()[:16]
             cover_filename += f"?v={cover_version}"
 
         markdown = doc_path.read_text(encoding="utf-8")
