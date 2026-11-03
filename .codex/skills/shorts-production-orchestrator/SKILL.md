@@ -75,7 +75,7 @@ Pick on the basis of the **actual narrative mechanism**, not a superficial genre
 | Horror, uncanny, supernatural threat | `horror-writer` | Literal camera, spatial/body consistency, internal supernatural invariants and behavioral credibility |
 | Science/technology-driven SF | `sf-short-writer` | SF difference, human theme, transformed theme, literary flavor; scoring/revision loop |
 | 久条麗華 ongoing series | `reika-series-planner` | Canon and structural variety; does NOT require a mystery in every installment |
-| Romance, comedy, fantasy, historical, action, work, sports, daily/literary, fable, philosophical, formal experiment and other genres without installed specialists | `shorts-concept-planner` + common verification below | Derive genre-relevant craft checks from chosen conflict, pacing and audience; record `specialist: none installed`; never misapply mystery/SF/horror rules just to fill a slot |
+| 小噺・落語風の短編、ライトノベル、異世界転生・転移、悪役令嬢、romance, comedy, fantasy, historical, action, work, sports, daily/literary, fable, philosophical, formal experiment and other genres without installed specialists | `shorts-concept-planner` + common verification below | Derive genre-relevant craft checks from chosen conflict, pacing and audience; record `specialist: none installed`; never misapply mystery/SF/horror rules just to fill a slot |
 
 For cross-genre work, select a primary engine and apply other specialists only to their specific mechanisms. Example: SF horror uses SF world-change checks and horror geometry/fear checks; mystery romance uses fair-play logic only for the case and relationship stakes for the drama. Do not automatically label all stories science fiction or all detective-character episodes whodunits.
 
@@ -93,7 +93,7 @@ For cross-genre work, select a primary engine and apply other specialists only t
 
 When authorized to produce/publish a managed story:
 - Use `shorts-reader-maintainer` and `UPDATE.md`; `doc.md` remains text source of truth.
-- Cover follows the actual story without giving away the climax; inspect similarity to recent actual covers, not just prompts. Ensure required JPEG exists for the current reader.
+- Cover must follow **both the actual story and the chosen genre/subgenre's reader-facing visual language**, without giving away the climax. Explicitly support 小噺の喜劇性、ライトノベルのキャラクター性、異世界の世界観、悪役令嬢の人物・宮廷性などを、作品の内容に応じて表紙に表現する。Use the genre fidelity/content fidelity PASS gates in `shorts-reader-maintainer`; inspect similarity to recent actual covers, not just prompts. Ensure required JPEG exists for the current reader.
 - Regenerate `index.html` wrappers and catalog with the repo's generator as appropriate, verify hashes and references, run documented static/HTTP tests and actual reader pagination/cover where possible.
 - Preserve existing unrelated changes. Inspect staged scope and commit/push only within explicit user authorization.
 - Distinguish code pushed, GitHub Pages deployed, and actual browser verified. Never claim the last two solely from a successful connector write.
@@ -111,9 +111,9 @@ When authorized to produce/publish a managed story:
 For substantial managed work record in `idea.md`:
 1. scope and constraints;
 2. external research date, dated source/URL log, breadth and verification status; concept skill completion and any series subskill;
-3. primary genre and story engine, secondary genres if any;
+3. primary genre, **reader-facing style (小噺/ライトノベル/異世界/悪役令嬢等)**, story engine, secondary genres if any;
 4. invoked specialists **and why**; or why none applies;
 5. design and first-reader verification, failed items and repairs;
-6. publishing steps and verified vs unverified state.
+6. cover genre legibility and story-content fidelity PASS/FAIL/NOT TESTED, publishing steps, and verified vs unverified state.
 
 An installed skill is only present if its SKILL.md exists and can be read. Do not claim that romance, fantasy, historical, comedy, etc. have specialized skills until those are added. The orchestration must still support them via the common craft verification rather than quietly biasing the publication list toward SF/mystery/horror.
