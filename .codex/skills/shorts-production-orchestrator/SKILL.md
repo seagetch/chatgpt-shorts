@@ -77,6 +77,8 @@ Pick on the basis of the **actual narrative mechanism**, not a superficial genre
 | 久条麗華 ongoing series | `reika-series-planner` | Canon and structural variety; does NOT require a mystery in every installment |
 | 小噺・落語風の短編、ライトノベル、異世界転生・転移、悪役令嬢、romance, comedy, fantasy, historical, action, work, sports, daily/literary, fable, philosophical, formal experiment and other genres without installed specialists | `shorts-concept-planner` + common verification below | Derive genre-relevant craft checks from chosen conflict, pacing and audience; record `specialist: none installed`; never misapply mystery/SF/horror rules just to fill a slot |
 
+For **異世界転生**, treat reincarnation as a distinct reader-facing primary genre rather than conflating it with body-preserving 異世界転移; apply the reincarnation-specific prior-life/new-identity/world-rule checklist in `shorts-concept-planner`. Cover review must depict the correct reincarnated identity and world. Specialist unavailable: use common story checks, not arbitrary SF/mystery requirements.
+
 For cross-genre work, select a primary engine and apply other specialists only to their specific mechanisms. Example: SF horror uses SF world-change checks and horror geometry/fear checks; mystery romance uses fair-play logic only for the case and relationship stakes for the drama. Do not automatically label all stories science fiction or all detective-character episodes whodunits.
 
 ## Phase 3: Complete story draft and review
