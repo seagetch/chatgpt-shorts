@@ -91,6 +91,15 @@ For cross-genre work, select a primary engine and apply other specialists only t
 - Compare the actual `doc.md` with archive neighbors for repeated openings, conversational patterns, incident architecture, emotional resolution and endings. Novel premises can still produce formulaic prose.
 - Record in `idea.md` a concrete pass/fail/not-tested matrix and repair decisions. Structural fail in causal/spatial/behavioral intelligibility or selected engine should block acceptance; rewrite, re-review, and retest until repaired. Never inflate a score to justify release.
 
+## Length and narrative-density gate (mandatory for all new drafts and substantial revisions)
+
+- **Default target:** Unless the user specifies otherwise, plan a complete short story at **3,000–4,000 Japanese characters excluding whitespace** (roughly 2,500–5,000 may be justified by genre and structure). This reflects the established archive's typical scope, **not** a quota that overrides a user request or the work's artistic needs. Count actual `doc.md` prose, excluding whitespace and the Markdown title.
+- **Do not silently shrink to 1,000–1,500 characters.** A draft below **2,000 characters** is an **exception requiring explicit justification in `idea.md`**: name the intended form (e.g. 小噺, 落語の一席, 寓話, flash fiction), why its setup/escalation/payoff is fully realized at that length, and why expansion would weaken it. The label "short" or a compressed synopsis is not justification. The reviewer must independently agree; otherwise expand through substantive scenes and re-review.
+- **Genre-dependent substance:** For 異世界転生, 悪役令嬢, 学園ラノベ, adventure and other character/world-driven stories, ensure sufficient space for relationships, rules, agency, obstacles, escalation and earned consequences; do not rush from setup straight to the resolution. For comedy/落語, brevity may be correct if the rhythm, repetitions and punchline work. SF/mystery/horror must satisfy their specialist mechanisms regardless of count.
+- **No padding:** Never lengthen by restating exposition, adding purposeless dialogue, repetitive beats or generic scenery. Revise causal progression, lived scenes, character choices, stakes and payoff instead. Strong works can be outside the default range when explicitly warranted.
+- **Required recorded measurement:** Before acceptance compute and log actual non-whitespace character count, planned range, genre-specific length rationale, and PASS/FAIL in `idea.md`. Compare the draft's density against recent published works without mechanically imitating their plots. A below-2,000 draft without an independently validated exception is **FAIL and blocks publication**.
+- **Existing works:** Apply this gate to substantial revisions and retrospective audits, but do not silently expand or overwrite existing stories as part of unrelated cover/reader maintenance.
+
 ## Phase 4: Publication when in scope
 
 When authorized to produce/publish a managed story:
