@@ -21,7 +21,7 @@ SHORTS CONCEPT PLANNER (always for a new premise)
   |-- if 久条麗華 series: REIKA SERIES PLANNER adds canon and
   |   series-specific divergence + archive checks during planning
   v
-Concept lock (idea.md: candidates, novelty audit, chosen engine, handoff)
+Concept lock (idea.md: external research, candidates, novelty audit, chosen engine, handoff)
   |
   v
 Genre and mechanism router
@@ -56,10 +56,11 @@ Commit/push and publication verification when authorized
 
 Read and apply `.codex/skills/shorts-concept-planner/SKILL.md`.
 
-- Generate distinct candidates **before browsing old plot content**; use genre taxonomy and independent story engines as separate axes.
+- Before selecting genres, research current news, cultural trends, social discussion and deeper historical/scientific/philosophical/occupational subjects across unrelated domains using current credible sources. Log dated source URLs, factual findings, uncertainties, and fiction-worthy questions in `idea.md`. This research supports original concepts; it does not dictate a fashionable genre or license close retellings of real tragedies.
+- Generate distinct candidates **after external discovery but before browsing old plot content**; use genre taxonomy and independent story engines as separate axes. If live research is unavailable or prohibited, record `NOT VERIFIED` rather than pretend it was done.
 - Then check actual older texts and production notes to find structural repetition, not inspiration to replicate.
 - For a series, perform its series-specific planning as a **substep of the common planning phase**, not as a competing earlier route. For 久条麗華, read `reika-series-planner` and preserve its canon/divergence/score rules; avoid duplicate six-candidate exercises by using one shared pool that satisfies both skills.
-- Record in `idea.md`: candidate set, novelty audit, selected direction, rejected near-duplicates, genre/engine, requirements, and specialist routing.
+- Record in `idea.md`: external research log and verification status, candidate set, novelty audit, selected direction, rejected near-duplicates, genre/engine, requirements, and specialist routing.
 - **STOP gate:** Do not draft `doc.md` if concept is FAIL or key genre/engine has not been selected. If user asks only for ideas, end after this phase.
 
 ## Phase 2: Specialist routing, not genre flattening
@@ -109,7 +110,7 @@ When authorized to produce/publish a managed story:
 
 For substantial managed work record in `idea.md`:
 1. scope and constraints;
-2. concept skill completion and any series subskill;
+2. external research date, dated source/URL log, breadth and verification status; concept skill completion and any series subskill;
 3. primary genre and story engine, secondary genres if any;
 4. invoked specialists **and why**; or why none applies;
 5. design and first-reader verification, failed items and repairs;
