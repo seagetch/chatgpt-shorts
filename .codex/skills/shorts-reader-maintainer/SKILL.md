@@ -51,6 +51,14 @@ Use this skill when the task involves any of these files or behaviors:
 - If pagination or layout breaks only after generator changes, regenerate all pages before judging the result.
 - If runtime loading fails, check the folder name passed in `?book=` and confirm `doc.md` and `title.jpg` exist in that folder.
 
+## Mandatory cover origin: image generation only
+
+**Non-negotiable user requirement:** All new, replacement, or revised story cover artwork MUST originate from an image-generation model/tool. NEVER design or draw cover artwork with SVG, CSS, HTML canvas, vector shapes, procedural rendering, programmatic illustration, stock images, or manually assembled graphics. Programmatic operations are permitted ONLY to prepare an already image-generated picture for publication (crop, resize, JPEG encoding, noncreative metadata/hash checks). Do not replace already generated individual covers with a newly invented collage or synthetic vector artwork. If an image-generated cover already exists for the story, locate and reuse that exact artwork before considering new generation.
+
+Public covers must be `title.jpg` (JPEG). Do not publish SVG covers, add SVG support to the reader for covers, or alter the established reader/generator contract to accommodate another artwork medium. If the generated source is PNG, encode that image to JPEG, without inventing new visuals. If user asks for an edit, preserve all unrequested image properties.
+
+Before approval, verify image-generation provenance per cover: source identifier/path or generator result, the final JPEG's source relation, visual match to the story, correct folder, and published `title.jpg` reference. If origin is not established, mark FAIL and do not substitute a program-drawn image.
+
 ## Cover direction and visual review
 
 - Read the story and its literary tone before choosing a cover. Choose composition, people or action, viewpoint, medium and palette to convey this particular work; changing only props is not enough.
