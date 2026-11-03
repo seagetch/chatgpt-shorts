@@ -16,7 +16,7 @@
 ### How to use skills
 
 - **Always enter through `shorts-production-orchestrator` for new stories, story concepts, substantial story revisions, reviews, or publication workflows.** It determines which phases apply; do not start with a genre writer for a new story.
-- **For a new story, run `shorts-concept-planner` before any genre-specific writing skill.** First create at least six substantially different independent concepts where the brief permits, then inspect previous stories only for repetition detection and continuity. Record selection in `idea.md` before writing `doc.md`.
+- **For a new story, run `shorts-concept-planner` before any genre-specific writing skill.** Research current news, trends, public discussions, and deeper scientific/historical/cultural topics using dated sources before genre selection. Then create at least six substantially different independent concepts where the brief permits, and only afterward inspect previous stories for repetition detection and continuity. Record sources, verification limits, candidate comparison, and selection in `idea.md` before writing `doc.md`.
 - For an existing story with unchanged premise, use the orchestrator's narrow review/revision route; do not force six new pitches. For other genres without a dedicated writer skill, use common concept and quality checks rather than forcing mystery mechanics.
 
 - Use `mystery-writer` for planning or drafting a mystery, especially when the story should be managed through truth, recognition, clue, suspect, scene, and verification tables.
