@@ -36,6 +36,12 @@ Broaden candidate creation by considering these families, including subgenres an
 19. **ライトノベル／キャラクター小説**: 学園ラノベ、異能バトル、冒険ファンタジー、ラブコメ、日常系、キャラクター掛け合い、バディ、転生・追放・成り上がり、Web小説的な強い導入と爽快な転換、コメディ主体の短編。ライトノベルは文体・読者期待・市場形式でもあり、他の主ジャンルと組み合わせて指定する。
 20. **異世界・悪役令嬢系（独立した企画枠としても検討）**: 転生先での生活、ゲーム世界、婚約破棄、断罪回避、破滅フラグ、宮廷陰謀、領地・経営、貴族社会のコメディ、主従逆転、複数視点の誤解、恋愛以外の解決。既存のテンプレ展開を安易に反復せず、人物の能動的選択と短編の独立した決着を作る。
 
+21. **異世界転生（異世界転移とは独立した主ジャンル）**: 前世の記憶を持って別人・別種族・別の地位に生まれ変わる／死後の再出発／幼少期からのやり直し／転生先での成長／転生後の家族・社会との関係／前世の技能の限界と誤用／転生特典・チート能力の代償／転生先での職業・領地経営・冒険・恋愛・コメディ・復讐／転生そのものを疑う変化球。**異世界転移**（元の身体のまま別世界へ移動）や**現代への転生**とは区別して明示的に選択・記録する。短編では転生を単なる導入説明にせず、転生によって生まれた選択・対立・変化を本編の核に置く。
+
+### Isekai reincarnation planning check
+
+When selecting 異世界転生, record: (a) who the protagonist was in the prior life and what matters from it; (b) who they become, including species, age, status, limitations and relationships; (c) whether prior memories are complete or partial, and what abilities actually carry over; (d) what the new world's independently consistent social and magical rules are; (e) what they can choose **now** that makes this episode a story rather than a setup; (f) how the result fits the intended short length. Avoid automatic invincibility, generic skill menus, obligatory truck accidents, and unearned instant admiration unless the story intentionally uses or parodies those conventions. Distinguish reincarnation from summoning and body-preserving transfer in the concept and reader-facing label.
+
 **Short-form Japanese literary modes must not be erased by a broad Western genre label.** For each idea explicitly consider whether 小噺、掌編コメディ、ライトノベル、異世界転生・転移、悪役令嬢、Web小説風の短編 are viable creative modes alongside literary, SF, detective, or dramatic works. They must be allowed as the PRIMARY intended reader experience, not merely subordinated as a minor flavor. Avoid always choosing restrained realism over playful/genre-forward premises.
 
 Genres are **not** plot engines. Independently vary: puzzle, reversal, duel, pursuit/escape, quest/discovery, growth, relationship shift, sacrifice/choice, fall/tragedy, escalating farce, competition, revenge, cumulative repetition, observation, allegory/satire. Choose an engine that creates concrete choices and change, not just an atmospheric label.
