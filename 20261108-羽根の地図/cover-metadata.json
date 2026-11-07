@@ -1,0 +1,13 @@
+{
+  "source": "built-in imagegen",
+  "source_id": "exec-443133d9-6ba9-4f08-a86c-411815381723.png",
+  "source_sha256": "95ed68870f2d2dff8948cb6a646169d51e41e5ea8d7460f071002fdfc50cb03b",
+  "jpeg_sha256": "0736dc903a1ec5b12900d147ce483ed4920097dcca6337047f0ebf1e77ec4186",
+  "width": 1024,
+  "height": 1536,
+  "processing": "RGB JPEG quality 90 optimize; no creative editing",
+  "genre_gate": "PASS",
+  "content_gate": "PASS",
+  "spoiler_gate": "PASS",
+  "visible_anatomy": "Two heads, two bodies, two tails, four wings. Feet partly occluded, not fully independently verified."
+}
