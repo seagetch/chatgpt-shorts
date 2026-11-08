@@ -1,0 +1,13 @@
+{
+  "source": "built-in imagegen",
+  "source_id": "exec-756650f1-9f24-49bc-913a-128b0bba7a4a.png",
+  "source_sha256": "ca749599b8a37cc1974a7c5627e03a110357eb9d7cc3cf2b575920297da8c88e",
+  "jpeg_sha256": "83242cc9b31c61612da5da4b81ea3786e59f43684f6e7a9dfd2c299f612af4dc",
+  "width": 1024,
+  "height": 1536,
+  "processing": "RGB JPEG quality 90 optimize; no creative editing",
+  "genre_gate": "PASS",
+  "content_gate": "PASS",
+  "spoiler_gate": "PASS",
+  "visible_anatomy": "One adolescent male body, two connected arms with closed fists, two legs with bare feet. Both elbows and waist connections visually coherent. No duplicated limbs. Stance is illustrative, not a certified technical diagram."
+}
