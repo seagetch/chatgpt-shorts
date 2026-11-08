@@ -23,7 +23,7 @@ Target 3000–4000 Japanese characters. Sources: current scarecrow festival; lib
 6. 沖縄県文化観光スポーツ部空手振興課 https://prtimes.jp/main/html/rd/p/000000033.000052612.html 。発表11/4 10:00、空手・フランス文化交流の演武会予定11/7、翌11/8の演武祭も告知。参加実績・成果は未確認。借りるのは文化交流を通じた空手実演という話題だけで、架空道場と少年の出来事を実在催事の事実として扱わない。
 広く検索したニュース集約ページは一次性の弱さから題材根拠にしなかった。
 
-## 既刊の反復検査（独立8案を/tmpへ記録した後に実施）
+## 既刊の反復検査（独立8案を別ファイルへ記録した後に実施）
 実際のdoc.mdを確認: 11/2『仮の返事』、11/4『相合い傘は一人前』、11/5『二十七番の夕飯』、11/6『竜に値札をつけるな』、11/7『誓いのテイク七』、11/8『羽根の地図』。11/1企画とシリーズ設定も確認。
 - 案3は11/7と、別れる男女が同じ仕事を終えて別々に進む全体構造まで重なるため却下。
 - 案6は11/6の竜・値付け・幻想的商品という入口に近く、連続採用を見送る。
@@ -60,3 +60,9 @@ Target 3000–4000 Japanese characters. Sources: current scarecrow festival; lib
 - Python環境: requirements.txt通りPillow 12.3.0を専用仮想環境へ導入。py_compile PASS。generate_reader.pyを実行し全42作品とrootを再生成。変更が必要な新作wrapper、root一覧、cover-versions.jsonを整合。
 - scripts/check_site.py: HTTP resources and asset versions OK: 42 stories, catalog and shared reader。本文・読書ページ・JPEG・全ハッシュ参照をローカルHTTPで検証、PASS。
 - git diff --check: PASS。main、Pages、実ブラウザでの表示・ページ送りはこの記録時点では未実施。コミット後の実際の結果は完了報告で区別して通知する。
+
+## 公開後の実測結果
+作品公開コミット: 0ababc9e1781146df8388408d3c7f3f5b5085c22。現在mainの親SHAを条件にした非force更新で反映。remoteのmain SHA、取得したGit treeとローカルの8変更ファイル内容が一致、作業ツリーcleanを確認。
+公開HTTPでroot index、cover-versions、book.html、新作index、doc.md、title.jpgの200応答とローカルバイト一致を確認。ブラウザでも新作wrapperから共通readerへの遷移、表紙と冒頭の見開き、次頁（3–4/13）、End（13/13）、前頁（11–12/13）、Home（1–2/13）を実操作して確認。表紙の表示崩れ・文字の欠落は見られなかった。モバイル固有のスワイプ操作は別途未検証。
+
+GitHub Pages build and deployment run 42518739081: completed / success、対象SHA一致を確認。
