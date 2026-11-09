@@ -1,0 +1,11 @@
+{
+  "origin": "image_gen.imagegen",
+  "source_file": "exec-7dd1c82a-37c7-4dc2-9d55-85d69a7b87d6.png",
+  "source_sha256": "684eaf1c8c97a9c95cd7fb3b30fc9981cce31507e3165f3d1c44ff873d9dac0f",
+  "published_sha256": "c4652ac71f07f797378476342cb8ee21e705bb3b1a3edd25784bfe85b3d423eb",
+  "processing": "RGB conversion, proportional resize 768x1152, JPEG quality85; no new artwork",
+  "genre_fidelity": "PASS",
+  "story_fidelity": "PASS",
+  "spoiler_check": "PASS",
+  "visual_inspection": "Three office workers following their manager, laptops held plausibly, no duplicated or disconnected limbs. Exact Japanese title. No solution placard or final bags. Distinct from five recent covers."
+}
