@@ -275,6 +275,7 @@
       right: var(--sheet-pad-right);
       inline-size: var(--content-height);
       block-size: var(--content-width);
+      padding-block: 0.25em; /* Keep font ascent/descent ink inside clipped edges. */
       writing-mode: vertical-rl;
       text-orientation: mixed;
       overflow: hidden;
@@ -304,25 +305,10 @@
       z-index: -1;
     }
 
-    .measure-sheet .sheet-text {
-      position: absolute;
-      top: var(--sheet-pad-top);
-      right: var(--sheet-pad-right);
-      width: var(--content-width);
-      height: var(--content-height);
-      overflow: hidden;
-      padding: 0;
-    }
-
+    /* Measure the same fixed vertical text box used on the visible sheet.
+       Auto-sized measurement boxes change wrapping and can hide left overflow. */
+    .measure-sheet .sheet-text,
     .measure-sheet .sheet-text-inner {
-      position: static;
-      inset: auto;
-      display: block;
-      inline-size: auto;
-      block-size: auto;
-      min-inline-size: var(--content-height);
-      min-block-size: var(--content-width);
-      min-height: 0;
       overflow: visible;
     }
 
@@ -890,9 +876,9 @@
           currentBlocks.push(block);
           continue;
         }
-        if (block.kind === "p") {
-          for (const splitText of splitParagraphAcrossPages(measureText, block.text)) {
-            pages.push({ type: "text", blocks: [{ kind: "p", text: splitText }] });
+        if (block.kind !== "spacer") {
+          for (const splitText of splitParagraphAcrossPages(measureText, block.text, block.kind)) {
+            pages.push({ type: "text", blocks: [{ kind: block.kind, text: splitText }] });
           }
           continue;
         }
@@ -907,51 +893,85 @@
     }
 
     function fitsBlocksInPage(measureText, blocks) {
-      renderBlocksIntoContainer(measureText, blocks, true);
-      return measureText.scrollWidth <= measureText.clientWidth + 4 &&
-        measureText.scrollHeight <= measureText.clientHeight + 1;
+      const inner = renderBlocksIntoContainer(measureText, blocks, true);
+      const bounds = inner.getBoundingClientRect();
+      // Vertical-rl overflows towards the LEFT. scrollWidth on the outer box
+      // does not reliably include this negative overflow. Inspect actual line
+      // fragments, including partial final columns, before accepting a page.
+      const tolerance = 0.5; // Subpixel rounding only, never part of a glyph.
+      const inside = (rect) => rect.left >= bounds.left - tolerance &&
+        rect.right <= bounds.right + tolerance &&
+        rect.top >= bounds.top - tolerance &&
+        rect.bottom <= bounds.bottom + tolerance;
+      for (const child of inner.children) {
+        if (!inside(child.getBoundingClientRect())) return false;
+        const range = document.createRange();
+        range.selectNodeContents(child);
+        if (Array.from(range.getClientRects()).some((rect) => !inside(rect))) {
+          return false;
+        }
+      }
+      return true;
     }
 
-    function splitParagraphAcrossPages(measureText, text) {
+    function splitParagraphAcrossPages(measureText, text, kind = "p") {
       const chunks = [];
-      let remaining = text.trim();
+      let remaining = text;
       while (remaining) {
-        const segment = largestFittingSegment(measureText, remaining);
+        const segment = largestFittingSegment(measureText, remaining, kind);
         if (!segment || segment.length >= remaining.length) {
           chunks.push(remaining);
           break;
         }
-        const nextRemaining = remaining.slice(segment.length).trim();
-        const adjusted = rebalanceLeadingPunctuation(segment.trim(), nextRemaining);
-        chunks.push(adjusted.current);
-        remaining = adjusted.remaining;
+        chunks.push(segment);
+        remaining = remaining.slice(segment.length);
       }
       return chunks.filter(Boolean);
     }
 
-    function largestFittingSegment(measureText, text) {
+    function largestFittingSegment(measureText, text, kind) {
       const sentenceTokens = splitIntoSentenceTokens(text);
       if (sentenceTokens.length > 1) {
-        const sentenceMatch = largestFittingTokenPrefix(measureText, sentenceTokens);
-        if (sentenceMatch) {
+        const sentenceMatch = largestFittingTokenPrefix(measureText, sentenceTokens, kind);
+        if (sentenceMatch && !/^[、。，．！？!?」』）】]/u.test(text.slice(sentenceMatch.length))) {
           return sentenceMatch;
         }
       }
-      return largestFittingTokenPrefix(measureText, Array.from(text)) || text;
+      const characters = typeof Intl.Segmenter === "function"
+        ? Array.from(new Intl.Segmenter("ja", { granularity: "grapheme" }).segment(text), item => item.segment)
+        : Array.from(text);
+      const fitting = largestFittingTokenPrefix(measureText, characters, kind);
+      if (!fitting) throw new Error("本文を収めるための表示領域が不足しています");
+      // Move a forbidden page boundary backwards instead of appending an
+      // unmeasured punctuation glyph beyond the page edge.
+      const prefix = [];
+      let length = 0;
+      for (const character of characters) {
+        if (length >= fitting.length) break;
+        prefix.push(character);
+        length += character.length;
+      }
+      while (prefix.length > 1) {
+        const candidate = prefix.join("");
+        const next = text.slice(candidate.length);
+        if (!/^[、。，．！？!?」』）】]/u.test(next) && !/[「『（【]$/u.test(candidate)) return candidate;
+        prefix.pop();
+      }
+      return fitting;
     }
 
-    function largestFittingTokenPrefix(measureText, tokens) {
+    function largestFittingTokenPrefix(measureText, tokens, kind) {
       let low = 1;
       let high = tokens.length;
       let best = "";
       while (low <= high) {
         const mid = Math.floor((low + high) / 2);
-        const candidate = tokens.slice(0, mid).join("").trim();
+        const candidate = tokens.slice(0, mid).join("");
         if (!candidate) {
           low = mid + 1;
           continue;
         }
-        if (fitsBlocksInPage(measureText, [{ kind: "p", text: candidate }])) {
+        if (fitsBlocksInPage(measureText, [{ kind, text: candidate }])) {
           best = candidate;
           low = mid + 1;
         } else {
@@ -963,22 +983,9 @@
 
     function splitIntoSentenceTokens(text) {
       const rawTokens = text.match(/[^。！？!?]+[。！？!?]?["」』）】]*|.+$/gu);
-      return rawTokens ? rawTokens.map((token) => token.trim()).filter(Boolean) : [text];
+      return rawTokens && rawTokens.join("") === text ? rawTokens : [text];
     }
 
-    function rebalanceLeadingPunctuation(current, remaining) {
-      if (!remaining) {
-        return { current, remaining: "" };
-      }
-      const chars = Array.from(remaining);
-      const leading = [];
-      while (chars.length && "、。，．！？!?」』）】".includes(chars[0])) {
-        leading.push(chars.shift());
-      }
-      return leading.length
-        ? { current: current + leading.join(""), remaining: chars.join("").trimStart() }
-        : { current, remaining };
-    }
   </script>
 </body>
 </html>
