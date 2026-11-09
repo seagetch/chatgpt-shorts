@@ -1,0 +1,67 @@
+<!doctype html><meta charset="utf-8"><title>Reader pagination regression</title>
+<style>body{font:16px sans-serif}iframe{border:1px solid #aaa;display:block}pre{white-space:pre-wrap}</style>
+<h1>Reader pagination regression</h1><p>Runs the shared reader unchanged in differently sized frames. No story is modified.</p>
+<button id="run">Run tests</button><pre id="results">Ready</pre><div id="frames"></div>
+<script>
+const output = document.querySelector('#results');
+const host = document.querySelector('#frames');
+const cases = [
+ ['long prose', '長い文章の折り返しを確かめるために同じ段落を続ける。'.repeat(160)],
+ ['no punctuation', 'あいうえおかきくけこ'.repeat(240)],
+ ['punctuation/newlines', '。\nあ。い。う。え。\n「長い話」、続き。'.repeat(120)],
+ ['Latin', 'abcdefghijklmnopqrstuvwxyz0123456789'.repeat(100)],
+ ['Unicode', '文字😀か\u3099👩‍👩‍👧‍👦。'.repeat(160)]
+];
+function checkRects(doc, inner) {
+ const b=inner.getBoundingClientRect();
+ const inside=r=>r.left>=b.left-.5&&r.right<=b.right+.5&&r.top>=b.top-.5&&r.bottom<=b.bottom+.5;
+ for(const child of inner.children){
+  if(!inside(child.getBoundingClientRect())) return false;
+  const range=doc.createRange();range.selectNodeContents(child);
+  if([...range.getClientRects()].some(r=>!inside(r))) return false;
+ }
+ return true;
+}
+async function frameReady(frame) {
+ for(let i=0;i<300;i++) {
+  if(frame.contentDocument.querySelector('#pageIndicator')?.textContent) return;
+  await new Promise(r=>setTimeout(r,100));
+ }
+ throw Error('Reader initialization timeout');
+}
+async function run() {
+ document.querySelector('#run').disabled=true; output.textContent='Running…\n';host.replaceChildren();
+ const results=[];
+ try {
+  for(const [width,height] of [[390,844],[775,1205],[1366,768],[1920,1080]]) {
+   const frame=document.createElement('iframe');frame.width=width;frame.height=height;
+   frame.src='../book.html?book='+encodeURIComponent('20261109-川沿いのパン屋は今日も開く')+'&qa='+Date.now();host.append(frame);
+   await new Promise(resolve=>frame.onload=resolve); await frameReady(frame);
+   const win=frame.contentWindow, doc=frame.contentDocument;
+   const real=await win.loadWork();
+   const samples=[['reported novella',real.blocks],...cases.map(([name,text])=>[name,[{kind:'p',text}]]),['long heading',[{kind:'h1',text:'とても長い見出し'.repeat(90)}]]];
+   for(const [name,blocks] of samples) {
+    const pages=win.paginateWork({blocks});
+    const restored=pages.flatMap(p=>p.blocks||[]).map(b=>b.text).join('');
+    const original=blocks.map(b=>b.text).join('');
+    let contained=true;
+    const spread=doc.querySelector('#spreadHost');
+    for(const page of pages.filter(p=>p.type==='text')) {
+     const sheet=doc.createElement('article');sheet.className='sheet';
+     const text=doc.createElement('div');text.className='sheet-text';sheet.append(text);spread.replaceChildren(sheet);
+     const inner=win.renderBlocksIntoContainer(text,page.blocks);
+     if(!checkRects(doc,inner)){contained=false;break;}
+    }
+    const result={width,height,name,pages:pages.length,exactText:restored===original,contained};results.push(result);
+    output.textContent+=JSON.stringify(result)+'\n';
+   }
+   // Leave the actual reader and navigation available for visual review.
+   win.goToPage(1,false);
+  }
+  output.dataset.result=results.every(r=>r.exactText&&r.contained)?'PASS':'FAIL';
+  output.textContent+=output.dataset.result+' '+results.length+' cases';
+ } catch(error){output.dataset.result='ERROR';output.textContent+=error.stack;}
+ document.querySelector('#run').disabled=false;
+}
+document.querySelector('#run').onclick=run;
+</script>
