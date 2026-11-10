@@ -1,0 +1,20 @@
+{
+  "method": "image_gen",
+  "generated_source": "exec-2660d3f4-4766-4890-b21a-cd5c820e3aa0.png",
+  "source_sha256": "07230de5cc608a0694ee373f4207a3b89f132d46d6e4fca20368ff2e5de37eab",
+  "published_file": "title.jpg",
+  "published_sha256": "9077fe04908db0bcdcffc237099f395de8fa9edd51df6c56d3b4815eff882976",
+  "size": [
+    1024,
+    1536
+  ],
+  "processing": "Full-resolution RGB JPEG encoding only; quality=95, subsampling=0. No crop, resize, compositing, or retouching.",
+  "genre": "時代喜劇・落語風会話劇",
+  "visual_review": {
+    "title": "PASS: 代筆料は二人前",
+    "content_fidelity": "PASS: 代書人、紙屋、菓子屋、文机と手紙。料金交渉の結末は非表示。",
+    "genre_legibility": "PASS: 版画調の町家、三者の表情と掛け合い。",
+    "anatomy": "PASS: 三人それぞれ自然につながる二腕、指と筆・紙の接点。",
+    "comparison": "PASS: 直近5表紙を実画像で比較。現代室内・風景・空手・オフィス移動と異なる構図。"
+  }
+}
