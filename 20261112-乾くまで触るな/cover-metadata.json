@@ -1,0 +1,20 @@
+{
+  "method": "image_gen",
+  "generated_source": "exec-512f3abd-852a-426e-8ce6-6d1b9dbd90c5.png",
+  "source_sha256": "d08c7884a594529f2d4c4f96c04be399020c8bf73d605081508847dd483e8b71",
+  "published_file": "title.jpg",
+  "published_sha256": "2c933bbb3e049e7899a13e4309c60bdf4d01c10a0ae221834f97e8c6d89c5d3c",
+  "size": [
+    1024,
+    1536
+  ],
+  "processing": "RGB JPEG encoding only; quality=95, subsampling=0. No crop, resize, compositing, or retouching.",
+  "genre": "現代青春・競争ドラマ",
+  "visual_review": {
+    "title": "PASS: 乾くまで触るな",
+    "content_fidelity": "PASS: 冒頭の共同アトリエ、濡れた青い水彩に触れようとする律と制止する牧野。結末・審査結果は描かない。",
+    "genre_legibility": "PASS: 二人の若い制作者の緊張と具体的な道具、現代青春小説の鉛筆・水彩画風。",
+    "anatomy": "PASS: 各人二腕、肩・肘・手首の接続と各手の指。物体と手が融合していない。",
+    "comparison": "PASS: 最新5表紙実画像の暖色や屋外、時代劇・単独競技と異なる冷白・青緑、机の対角線と二人の距離。"
+  }
+}
