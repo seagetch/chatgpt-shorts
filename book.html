@@ -889,7 +889,12 @@
         pages.push({ type: "text", blocks: currentBlocks });
       }
       measureSheet.remove();
-      return pages;
+      // Paragraph spacing is not a readable page. In particular, a trailing
+      // spacer may spill after the final text page or follow a split paragraph.
+      // Keep authored spacing within text pages, but do not count/navigate to
+      // spacer-only pages. The paired blank sheet is handled by renderSheet.
+      return pages.filter((page) => page.type === "cover" ||
+        page.blocks.some((block) => block.kind !== "spacer"));
     }
 
     function fitsBlocksInPage(measureText, blocks) {

@@ -33,13 +33,27 @@ async function run() {
  document.querySelector('#run').disabled=true; output.textContent='Running…\n';host.replaceChildren();
  const results=[];
  try {
+  const versions=await fetch('../cover-versions.json',{cache:'no-cache'}).then(r=>r.json());
+  const stories=await Promise.all(Object.keys(versions).map(async folder=>({
+   name:folder,
+   markdown:await fetch('../'+encodeURIComponent(folder)+'/doc.md',{cache:'no-cache'}).then(r=>{
+    if(!r.ok) throw Error(folder+': HTTP '+r.status);
+    return r.text();
+   })
+  })));
+
   for(const [width,height] of [[390,844],[775,1205],[1366,768],[1920,1080]]) {
    const frame=document.createElement('iframe');frame.width=width;frame.height=height;
    frame.src='../book.html?book='+encodeURIComponent('20261109-川沿いのパン屋は今日も開く')+'&qa='+Date.now();host.append(frame);
    await new Promise(resolve=>frame.onload=resolve); await frameReady(frame);
    const win=frame.contentWindow, doc=frame.contentDocument;
    const real=await win.loadWork();
-   const samples=[['reported novella',real.blocks],...cases.map(([name,text])=>[name,[{kind:'p',text}]]),['long heading',[{kind:'h1',text:'とても長い見出し'.repeat(90)}]]];
+   const samples=[...stories.map(story=>[story.name,win.parseMarkdown(story.markdown)]),
+    ...cases.map(([name,text])=>[name,[{kind:'p',text}]]),
+    ['long heading',[{kind:'h1',text:'とても長い見出し'.repeat(90)}]],
+    ['split then trailing space',[{kind:'p',text:'長い最終文。'.repeat(160)},{kind:'spacer',text:''}]],
+    ['spacers only',[{kind:'spacer',text:''},{kind:'spacer',text:''}]],
+    ['interior space',[{kind:'p',text:'前。'},{kind:'spacer',text:''},{kind:'p',text:'後。'}]]];
    for(const [name,blocks] of samples) {
     const pages=win.paginateWork({blocks});
     const restored=pages.flatMap(p=>p.blocks||[]).map(b=>b.text).join('');
@@ -52,13 +66,14 @@ async function run() {
      const inner=win.renderBlocksIntoContainer(text,page.blocks);
      if(!checkRects(doc,inner)){contained=false;break;}
     }
-    const result={width,height,name,pages:pages.length,exactText:restored===original,contained};results.push(result);
+    const nonempty=pages.filter(p=>p.type==='text').every(p=>p.blocks.some(b=>b.kind!=='spacer'));
+    const result={width,height,name,pages:pages.length,exactText:restored===original,contained,nonempty};results.push(result);
     output.textContent+=JSON.stringify(result)+'\n';
    }
    // Leave the actual reader and navigation available for visual review.
    win.goToPage(1,false);
   }
-  output.dataset.result=results.every(r=>r.exactText&&r.contained)?'PASS':'FAIL';
+  output.dataset.result=results.every(r=>r.exactText&&r.contained&&r.nonempty)?'PASS':'FAIL';
   output.textContent+=output.dataset.result+' '+results.length+' cases';
  } catch(error){output.dataset.result='ERROR';output.textContent+=error.stack;}
  document.querySelector('#run').disabled=false;
